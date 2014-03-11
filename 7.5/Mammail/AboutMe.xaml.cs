@@ -16,29 +16,39 @@ namespace Mammail
         {
             InitializeComponent();
         }
+       
 
-        private void TxtAbtMe_Tap(object sender, System.Windows.Input.GestureEventArgs e)
+        
+
+        private void Fb_Click(object sender, RoutedEventArgs e)
         {
+            WebBrowserTask browser = new WebBrowserTask();
 
+            browser.Uri = new Uri("https://m.facebook.com/abhishekde.nasa");
+            browser.Show();
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
             WebBrowserTask browser = new WebBrowserTask();
 
             browser.Uri = new Uri("https://twitter.com/abhishekdepro");
             browser.Show();
         }
 
-        private void TxtBlkBlog_Tap(object sender, System.Windows.Input.GestureEventArgs e)
-        {
-            WebBrowserTask browser = new WebBrowserTask();
-
-            browser.Uri = new Uri("http://bitsandbinaries.wordpress.com/");
-            browser.Show();
-        }
-
-        private void TxtBlkGit_Tap(object sender, System.Windows.Input.GestureEventArgs e)
+        private void Button_Click_2(object sender, RoutedEventArgs e)
         {
             WebBrowserTask browser = new WebBrowserTask();
 
             browser.Uri = new Uri("https://github.com/abhishekdepro");
+            browser.Show();
+        }
+
+        private void Button_Click_3(object sender, RoutedEventArgs e)
+        {
+            WebBrowserTask browser = new WebBrowserTask();
+
+            browser.Uri = new Uri("http://bitsandbinaries.wordpress.com/");
             browser.Show();
         }
 
