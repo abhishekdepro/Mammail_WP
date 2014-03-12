@@ -30,21 +30,30 @@ namespace Mammmail_WP8
 
         private void signup_Click(object sender, RoutedEventArgs e)
         {
-            checkuserlogin();
+            if (username.Text == "" || username.Text == "select a username")
+                MessageBox.Show("Smart try! But we don't accept anonymous users!");
+            else if(password.Password=="")
+                MessageBox.Show("You can never unlock without a key!");
+            else
+                checkuserlogin();
+                
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             // Redirect after login to user home page
-            /*try
+            try
             {
                
                 //if user is already logged in
-                if (ParseUser.CurrentUser.Username != "abhishek")
+                if (ParseUser.CurrentUser!=null)
                 {
                     string user = ParseUser.CurrentUser.Username;
-                    MessageBoxResult result = MessageBox.Show("Welcome " + user, "Welcome Back", MessageBoxButton.OK);
-                    this.NavigationService.Navigate(new Uri("/email.xaml", UriKind.RelativeOrAbsolute));
+                    MessageBoxResult result = MessageBox.Show("Welcome " + user, "Welcome Back", MessageBoxButton.OKCancel);
+                    if (result == MessageBoxResult.OK)
+                        this.NavigationService.Navigate(new Uri("/email.xaml", UriKind.RelativeOrAbsolute));
+                    else
+                        this.NavigationService.Navigate(new Uri("/MainPage.xaml", UriKind.Relative));
                 }
                 else
                 {
@@ -54,7 +63,7 @@ namespace Mammmail_WP8
             catch (Exception ex)
             {
 
-            }*/
+            }
            // base.OnNavigatedTo(e);
         }
 
@@ -64,7 +73,7 @@ namespace Mammmail_WP8
             {
                 await ParseUser.LogInAsync(username.Text, password.Password);
                 MessageBox.Show("Login was successful.");
-
+                this.NavigationService.Navigate(new Uri("/email.xaml",UriKind.Relative));
                 //login = 1;
                 //appSettings.Remove("Parse.CurrentUser");
                 //appSettings.Add("Parse.CurrentUser", username.Text);
@@ -81,17 +90,25 @@ namespace Mammmail_WP8
 
         private async void signupbtn_Click(object sender, RoutedEventArgs e)
         {
-            var user = new ParseUser()
+            try
+            {
+                var user = new ParseUser()
             {
                 Username = username.Text,
                 Password = password.Password,
                 Email = email.Text
             };
 
-            // other fields can be set just like with ParseObject
-            // user["phone"] = "415-392-0202";
+                // other fields can be set just like with ParseObject
+                // user["phone"] = "415-392-0202";
 
-            await user.SignUpAsync();
+                await user.SignUpAsync();
+                MessageBox.Show("Signed up! Now you may proceed too login", "Hello", MessageBoxButton.OK);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         // Sample code for building a localized ApplicationBar

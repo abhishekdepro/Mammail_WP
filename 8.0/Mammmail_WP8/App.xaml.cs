@@ -9,6 +9,8 @@ using Microsoft.Phone.Shell;
 using Mammmail_WP8.Resources;
 using Parse;
 using System.IO.IsolatedStorage;
+using Mammail_WP8.ViewModels;
+using Telerik.Windows.Controls;
 
 namespace Mammmail_WP8
 {
@@ -19,7 +21,23 @@ namespace Mammmail_WP8
         /// </summary>
         /// <returns>The root frame of the Phone Application.</returns>
         public static PhoneApplicationFrame RootFrame { get; private set; }
+        private static MainViewModel viewModel = null;
 
+        /// <summary>
+        /// A static ViewModel used by the views to bind against.
+        /// </summary>
+        /// <returns>The MainViewModel object.</returns>
+        public static MainViewModel ViewModel
+        {
+            get
+            {
+                // Delay creation of the view model until necessary
+                if (viewModel == null)
+                    viewModel = new MainViewModel();
+
+                return viewModel;
+            }
+        }
         /// <summary>
         /// Constructor for the Application object.
         /// </summary>
@@ -79,6 +97,7 @@ namespace Mammmail_WP8
                 mapper.UriMappings[0].MappedUri = new Uri("/email.xaml?method=UriMapper&time=" + time.ToLongTimeString(), UriKind.Relative);
         }*/
 
+        public RadRateApplicationReminder rateReminder;
         // Code to execute when the application is launching (eg, from Start)
         // This code will not execute when the application is reactivated
         private void Application_Launching(object sender, LaunchingEventArgs e)
@@ -88,8 +107,9 @@ namespace Mammmail_WP8
 
         // Code to execute when the application is activated (brought to foreground)
         // This code will not execute when the application is first launched
-        private void Application_Activated(object sender, ActivatedEventArgs e)
+        private async void Application_Activated(object sender, ActivatedEventArgs e)
         {
+            await ParseInstallation.CurrentInstallation.SaveAsync();
         }
 
         // Code to execute when the application is deactivated (sent to background)
