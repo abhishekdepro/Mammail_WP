@@ -27,5 +27,30 @@ namespace TelerikWindowsPhoneApp1
             browser.Uri = new Uri("http://asthmaccurate.cloudapp.net/", UriKind.Absolute);
             browser.Show();
         }
+
+        private void ApplicationBarIconButton_Click_1(object sender, EventArgs e)
+        {
+            EmailComposeTask e1 = new EmailComposeTask();
+            e1.To = "abhishekde@hotmail.com";
+            e1.Cc = "surrealbelongings@outlook.com";
+            e1.Subject = "Feedback on mammail";
+            e1.Body = Microsoft.Phone.Info.DeviceStatus.DeviceName.ToString();
+            e1.Show();
+        }
+
+        private void ApplicationBarIconButton_Click_2(object sender, EventArgs e)
+        {
+            MarketplaceReviewTask review = new MarketplaceReviewTask();
+            review.Show();
+        }
+
+        
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            WebBrowserTask web1 = new WebBrowserTask();
+            web1.Uri = new Uri("http://asthmaccurate.cloudapp.net/paypal.html", UriKind.Absolute);
+            web1.Show();
+        }
     }
 }

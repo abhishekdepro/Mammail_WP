@@ -61,9 +61,9 @@
 
         <!--ContentPanel - place additional content here-->
         <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
-            <StackPanel HorizontalAlignment="Left" Height="420" VerticalAlignment="Top" Width="436" Margin="10,49,0,0" Background="Black" Opacity="0.6">
-                <telerikPrimitives:RadTextBox x:Name="username" TextWrapping="Wrap" Text="select a username" Foreground="#FF383636" SelectionBackground="Black"/>
-                <telerikPrimitives:RadTextBox x:Name="email" TextWrapping="Wrap" Text="enter email id" Foreground="#FF383636" SelectionBackground="Black" InputScope="EmailSmtpAddress"/>
+            <StackPanel HorizontalAlignment="Left" Height="440" VerticalAlignment="Top" Width="436" Margin="10,26,0,0" Background="Black" Opacity="0.6">
+                <telerikPrimitives:RadTextBox x:Name="username" TextWrapping="Wrap" Text="select a username" Foreground="#FF383636" SelectionBackground="Black" Background="White"/>
+                <telerikPrimitives:RadTextBox x:Name="email" TextWrapping="Wrap" Text="enter email id" Foreground="#FF383636" SelectionBackground="Black" InputScope="EmailSmtpAddress" Background="White"/>
                 <Border BorderThickness="1" Height="3" Margin="10,0">
                     <Border.BorderBrush>
                         <SolidColorBrush Color="{StaticResource PhoneAccentColor}"/>
@@ -73,7 +73,7 @@
                     </Border.Background>
                 </Border>
                 <TextBlock TextWrapping="Wrap" Text="Password:" Margin="10,0"/>
-                <telerikPrimitives:RadPasswordBox x:Name="password" Foreground="#FF383636"/>
+                <telerikPrimitives:RadPasswordBox x:Name="password" Foreground="#FF383636" Background="White"/>
                 <Border BorderThickness="1" Height="3" Margin="10,0">
                     <Border.BorderBrush>
                         <SolidColorBrush Color="{StaticResource PhoneAccentColor}"/>
@@ -82,20 +82,26 @@
                         <SolidColorBrush Color="{StaticResource PhoneAccentColor}"/>
                     </Border.Background>
                 </Border>
-                <Grid Height="185">
+                <Grid Height="189">
                     <telerikPrimitives:RadImageButton x:Name="loginbtn" RestStateImageSource="Assets/login.png" PressedStateImageSource="Assets/login.png" ButtonShape="Image" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="signup_Click" Margin="0,0,0,97"/>
-                    <telerikPrimitives:RadImageButton x:Name="signupbtn" RestStateImageSource="/Assets/signup.png" PressedStateImageSource="/Assets/signup.png" ButtonShape="Image" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" IsChecked="False" Margin="0,54,0,38" Click="signupbtn_Click"/>
+                    <telerikPrimitives:RadImageButton x:Name="signupbtn" RestStateImageSource="/Assets/signup.png" PressedStateImageSource="/Assets/signup.png" ButtonShape="Image" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" IsChecked="False" Margin="0,54,0,40" Click="signupbtn_Click"/>
+
+                    <TextBlock x:Name="PassReset" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Reset Password" VerticalAlignment="Top" Margin="10,125,0,0" Width="416" Tap="PassReset_Tap">
+                        <TextBlock.Foreground>
+                            <SolidColorBrush Color="{StaticResource PhoneAccentColor}"/>
+                        </TextBlock.Foreground>
+                    </TextBlock>
                 </Grid>
 
             </StackPanel>
-            <StackPanel HorizontalAlignment="Left" Height="65" VerticalAlignment="Top" Width="436" Margin="10,511,0,0" Background="Black" Opacity="0.6">
-                <Grid Height="61">
+            <StackPanel HorizontalAlignment="Left" Height="81" VerticalAlignment="Top" Width="446" Margin="10,511,0,0" Background="Black" Opacity="0.6">
+                <Grid Height="106">
                     <TextBlock TextWrapping="Wrap" Text="© surreal belongings 2014">
                         <TextBlock.Foreground>
                             <SolidColorBrush Color="{StaticResource PhoneAccentColor}"/>
                         </TextBlock.Foreground>
                     </TextBlock>
-                    <TextBlock TextWrapping="Wrap" Text="Built with Telerik and Parse" Margin="184,26,-184,10">
+                    <TextBlock TextWrapping="Wrap" Text="Built with Telerik and Parse" Margin="184,42,-184,10">
                         <TextBlock.Foreground>
                             <SolidColorBrush Color="{StaticResource PhoneAccentColor}"/>
                         </TextBlock.Foreground>

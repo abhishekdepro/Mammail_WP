@@ -111,6 +111,20 @@ namespace Mammmail_WP8
             }
         }
 
+        private async void PassReset_Tap(object sender, System.Windows.Input.GestureEventArgs e)
+        {
+            if (email.Text == "" || email.Text=="enter email id")
+            {
+                MessageBox.Show("Enter email Id");
+            }
+            else
+            {
+
+                await ParseUser.RequestPasswordResetAsync(email.Text);
+                MessageBox.Show("A reset password link has been sent to "+email.Text);
+            }
+        }
+
         // Sample code for building a localized ApplicationBar
         //private void BuildLocalizedApplicationBar()
         //{

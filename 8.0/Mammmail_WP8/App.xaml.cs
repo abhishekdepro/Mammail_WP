@@ -168,6 +168,7 @@ namespace Mammmail_WP8
 
             // Ensure we don't initialize again
             phoneApplicationInitialized = true;
+            ThemeManager.ToDarkTheme();
         }
 
         // Do not add any additional code to this method

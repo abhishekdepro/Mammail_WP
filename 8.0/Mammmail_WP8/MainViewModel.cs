@@ -74,12 +74,19 @@ namespace Mammail_WP8.ViewModels
                 this.Items.Clear();
                 foreach (ParseObject result in results)
                 {
-                    string _to = result.Get<string>("to");
-                    string _cc = result.Get<string>("cc");
-                    string _sub = result.Get<string>("subject");
-                    string _body = result.Get<string>("body");
+                    string _to = Encryption.encrypt(result.Get<string>("to"));
+                    string _cc = Encryption.encrypt(result.Get<string>("cc"));
+                    string _sub = Encryption.encrypt(result.Get<string>("subject"));
+                    string _body = Encryption.encrypt(result.Get<string>("body"));
                     this.Items.Add(new Message { To = _to, Body = _body, Cc = _cc, Subject = _sub });
                     message.Add(new Message { To = _to, Body = _body, Cc = _cc, Subject = _sub });
+                }
+
+                if (message.Count==0)
+                {
+                 //   emailPanorama.DefaultItem = emailPanorama.Items[1];
+                    MessageBox.Show("You do not have any saved messages. Type a message and click save button below to save it.");
+                    
                 }
             }
             catch (Exception exc)

@@ -67,7 +67,7 @@
                         <telerikPrimitives:RadTextBox x:Name="to" TextWrapping="Wrap" Text="To:"/>
                         <telerikPrimitives:RadTextBox x:Name="cc" TextWrapping="Wrap" Text="Cc:"/>
                         <telerikPrimitives:RadTextBox x:Name="sub" TextWrapping="Wrap" Text="Subject:"/>
-                        <telerikPrimitives:RadTextBox x:Name="body" TextWrapping="Wrap" Text="Body"/>
+                        <telerikPrimitives:RadTextBox x:Name="body" TextWrapping="Wrap" Text="Body:"/>
                         <Grid Height="100">
                             <telerikPrimitives:RadImageButton x:Name="send" RestStateImageSource="Assets/send.png" PressedStateImageSource="Assets/send.png" ButtonShape="Image" HorizontalAlignment="Right" VerticalAlignment="Center" IsChecked="False" Margin="0,0,0,10" Click="send_Click"/>
                
