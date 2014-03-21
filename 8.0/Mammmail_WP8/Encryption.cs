@@ -13,7 +13,7 @@ namespace Mammmail_WP8
 
     public class Encryption
     {
-        
+        public static int  logged_in=0;
         public static string encrypt(string s)
         {
             char[] input = s.ToCharArray(); /*converts string to character array*/

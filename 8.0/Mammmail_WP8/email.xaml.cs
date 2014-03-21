@@ -26,7 +26,7 @@ namespace Mammmail_WP8
 
 
             this.Loaded += new RoutedEventHandler(MainPage_Loaded);
-            
+            Encryption.logged_in = 1;
         }
 
         
@@ -170,7 +170,7 @@ namespace Mammmail_WP8
             sub.Text = p.Subject;
             body.Text = p.Body;
 
-            
+            emailPanorama.DefaultItem = emailPanorama.Items[1];
         }
 
         private void ApplicationBarMenuItem_Click(object sender, EventArgs e)
@@ -186,6 +186,34 @@ namespace Mammmail_WP8
                 to.Text = "";
             }
         }
+
+        private void cc_MouseEnter(object sender, System.Windows.Input.MouseEventArgs e)
+        {
+            if (cc.Text == "Cc:")
+            {
+                cc.Text = "";
+            }
+        }
+
+        private void sub_MouseEnter(object sender, System.Windows.Input.MouseEventArgs e)
+        {
+            if (sub.Text == "Subject:")
+            {
+                sub.Text = "";
+            }
+        }
+
+        private void body_MouseEnter(object sender, System.Windows.Input.MouseEventArgs e)
+        {
+            if (body.Text == "Body:")
+            {
+                body.Text = "";
+            }
+        }
+
+        
+
+        
 
       
     }

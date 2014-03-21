@@ -64,10 +64,10 @@
                 <Grid Margin="0,-34,0,0">
                     <StackPanel HorizontalAlignment="Left" Height="445" VerticalAlignment="Top" Width="420" Background="Black" Opacity="0.6">
 
-                        <telerikPrimitives:RadTextBox x:Name="to" TextWrapping="Wrap" Text="To:"/>
-                        <telerikPrimitives:RadTextBox x:Name="cc" TextWrapping="Wrap" Text="Cc:"/>
-                        <telerikPrimitives:RadTextBox x:Name="sub" TextWrapping="Wrap" Text="Subject:"/>
-                        <telerikPrimitives:RadTextBox x:Name="body" TextWrapping="Wrap" Text="Body:"/>
+                        <telerikPrimitives:RadTextBox x:Name="to" TextWrapping="Wrap" Text="To:" MouseEnter="to_MouseEnter"/>
+                        <telerikPrimitives:RadTextBox x:Name="cc" TextWrapping="Wrap" Text="Cc:" MouseEnter="cc_MouseEnter"/>
+                        <telerikPrimitives:RadTextBox x:Name="sub" TextWrapping="Wrap" Text="Subject:" MouseEnter="sub_MouseEnter"/>
+                        <telerikPrimitives:RadTextBox x:Name="body" TextWrapping="Wrap" Text="Body:" MouseEnter="body_MouseEnter"/>
                         <Grid Height="100">
                             <telerikPrimitives:RadImageButton x:Name="send" RestStateImageSource="Assets/send.png" PressedStateImageSource="Assets/send.png" ButtonShape="Image" HorizontalAlignment="Right" VerticalAlignment="Center" IsChecked="False" Margin="0,0,0,10" Click="send_Click"/>
                

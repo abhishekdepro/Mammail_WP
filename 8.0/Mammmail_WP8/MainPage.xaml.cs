@@ -49,16 +49,24 @@ namespace Mammmail_WP8
                 if (ParseUser.CurrentUser!=null)
                 {
                     string user = ParseUser.CurrentUser.Username;
-                    MessageBoxResult result = MessageBox.Show("Welcome " + user, "Welcome Back", MessageBoxButton.OKCancel);
-                    if (result == MessageBoxResult.OK)
-                        this.NavigationService.Navigate(new Uri("/email.xaml", UriKind.RelativeOrAbsolute));
+                    if (Encryption.logged_in == 0)
+                    {
+                        MessageBoxResult result = MessageBox.Show("Welcome " + user, "Welcome Back", MessageBoxButton.OK);
+                        if (result == MessageBoxResult.OK)
+                            this.NavigationService.Navigate(new Uri("/email.xaml", UriKind.RelativeOrAbsolute));
+                        else
+                            this.NavigationService.Navigate(new Uri("/MainPage.xaml", UriKind.Relative));
+                    }
                     else
-                        this.NavigationService.Navigate(new Uri("/MainPage.xaml", UriKind.Relative));
+                    {
+                        MessageBoxResult result = MessageBox.Show("Logout?","Logout", MessageBoxButton.OKCancel);
+                        if (result == MessageBoxResult.OK)
+                            this.NavigationService.Navigate(new Uri("/MainPage.xaml", UriKind.RelativeOrAbsolute));
+                        else
+                            this.NavigationService.Navigate(new Uri("/email.xaml", UriKind.Relative));
+                    }
                 }
-                else
-                {
-                    // show the signup or login screen
-                }
+                
             }
             catch (Exception ex)
             {
@@ -73,6 +81,8 @@ namespace Mammmail_WP8
             {
                 await ParseUser.LogInAsync(username.Text, password.Password);
                 MessageBox.Show("Login was successful.");
+
+                
                 this.NavigationService.Navigate(new Uri("/email.xaml",UriKind.Relative));
                 //login = 1;
                 //appSettings.Remove("Parse.CurrentUser");
