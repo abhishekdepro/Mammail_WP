@@ -37,6 +37,11 @@
                     <ListBox.ItemTemplate>
                         <DataTemplate>
                             <StackPanel Orientation="Horizontal" Margin="0,0,0,17" Height="100" Tap="StackPanel_Tap">
+                                <toolkit:ContextMenuService.ContextMenu>
+                                    <toolkit:ContextMenu>
+                                        <toolkit:MenuItem Header="Delete Message" Click="MenuItem_Click"/>
+                                    </toolkit:ContextMenu>
+                                </toolkit:ContextMenuService.ContextMenu>
                                 <StackPanel.Background>
                                     <SolidColorBrush Color="Black" Opacity="0.6"/>
                                 </StackPanel.Background>

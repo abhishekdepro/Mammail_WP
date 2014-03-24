@@ -64,6 +64,7 @@ namespace Mammail_WP8.ViewModels
         public async void LoadData()
         {
             // Sample data; replace with real data
+            message.Clear();
             try
             {
                 var query = ParseObject.GetQuery("message")
@@ -72,14 +73,15 @@ namespace Mammail_WP8.ViewModels
 
                
                 this.Items.Clear();
+                
                 foreach (ParseObject result in results)
                 {
                     string _to = Encryption.encrypt(result.Get<string>("to"));
                     string _cc = Encryption.encrypt(result.Get<string>("cc"));
                     string _sub = Encryption.encrypt(result.Get<string>("subject"));
                     string _body = Encryption.encrypt(result.Get<string>("body"));
-                    this.Items.Add(new Message { To = _to, Body = _body, Cc = _cc, Subject = _sub });
-                    message.Add(new Message { To = _to, Body = _body, Cc = _cc, Subject = _sub });
+                    this.Items.Add(new Message { To = _to, Body = _body, Cc = _cc, Subject = _sub, ObjectId=result.ObjectId });
+                    message.Add(new Message { To = _to, Body = _body, Cc = _cc, Subject = _sub, ObjectId=result.ObjectId });
                 }
 
                 if (message.Count==0)

@@ -9,11 +9,27 @@ namespace Mammmail_WP8
 {
     public class Message : INotifyPropertyChanged
     {
-        private string _to, _cc, _sub, _body;
+        private string _to, _cc, _sub, _body,_objectid;
         /// <summary>
         /// Sample ViewModel property; this property is used in the view to display its value using a Binding.
         /// </summary>
         /// <returns></returns>
+        /// 
+        public string ObjectId
+        {
+            get
+            {
+                return _objectid;
+            }
+            set
+            {
+                if (value != _objectid)
+                {
+                    _objectid = value;
+                    NotifyPropertyChanged("ObjectId");
+                }
+            }
+        }
         public string To
         {
             get
